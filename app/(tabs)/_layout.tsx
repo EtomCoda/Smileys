@@ -1,6 +1,6 @@
 import React from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Tabs } from 'expo-router';
+import { Link, Tabs,  } from 'expo-router';
 import { Pressable } from 'react-native';
 
 import Colors from '@/constants/Colors';
@@ -20,19 +20,23 @@ export default function TabLayout() {
 
   return (
     <Tabs
+      initialRouteName="one"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         // Disable the static render of the header on web
         // to prevent a hydration error in React Navigation v6.
         headerShown: useClientOnlyValue(false, true),
       }}>
+      
+
       <Tabs.Screen
-        name="index"
+        name="one"
+      
         options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: 'Biometrics',
+          tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
           headerRight: () => (
-            <Link href="/modal" asChild>
+            <Link href="/Data" asChild>
               <Pressable>
                 {({ pressed }) => (
                   <FontAwesome
@@ -46,14 +50,17 @@ export default function TabLayout() {
             </Link>
           ),
         }}
+      
       />
+        
       <Tabs.Screen
         name="two"
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: 'Visitation',
+          tabBarIcon: ({ color }) => <TabBarIcon name="hospital-o" color={color} />,
         }}
       />
+      
     </Tabs>
   );
 }
